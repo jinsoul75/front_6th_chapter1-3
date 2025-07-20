@@ -1,4 +1,4 @@
-const isObject = (value: unknown): boolean => {
+const isObject = (value: unknown): value is object => {
   return typeof value === "object" && value !== null;
 };
 
@@ -10,8 +10,8 @@ export const shallowEquals = (a: unknown, b: unknown) => {
   if (!isObject(a) || !isObject(b)) return false;
 
   // 3. 객체의 키 개수가 다른 경우 처리
-  const keysA = Object.keys(a as object);
-  const keysB = Object.keys(b as object);
+  const keysA = Object.keys(a);
+  const keysB = Object.keys(b);
 
   if (keysA.length !== keysB.length) return false;
 
