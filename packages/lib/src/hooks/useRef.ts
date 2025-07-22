@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export function useRef<T>(initialValue: T): { current: T } {
   // useState를 이용해서 만들어보세요.
-  const [state] = useState(() => initialValue);
+  const [state] = useState(() => ({ current: initialValue }));
 
-  return { current: state };
+  return state;
 }
