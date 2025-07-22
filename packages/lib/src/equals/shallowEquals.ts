@@ -1,6 +1,4 @@
-const isObject = (value: unknown): value is object => {
-  return typeof value === "object" && value !== null;
-};
+import { isObject } from "../utils/utils";
 
 export const shallowEquals = (a: unknown, b: unknown) => {
   // 1. 두 값이 정확히 같은지 확인 (참조가 같은 경우)
@@ -18,7 +16,7 @@ export const shallowEquals = (a: unknown, b: unknown) => {
   // 4. 모든 키에 대해 얕은 비교 수행
   for (const key of keysA) {
     if (!keysB.includes(key)) return false;
-    if ((a as Record<string, unknown>)[key] !== (b as Record<string, unknown>)[key]) return false;
+    if (a[key as keyof typeof a] !== b[key as keyof typeof b]) return false;
   }
 
   return true;
