@@ -3,6 +3,7 @@ import { router } from "../../../router";
 import { PublicImage } from "../../../components";
 import { useProductStore } from "../hooks";
 import { loadProducts } from "../productUseCase";
+import { memo } from "../../../../../lib/src/hocs/memo";
 
 const retry = async () => {
   try {
@@ -20,7 +21,7 @@ const goToDetailPage = async (productId: string) => {
 /**
  * 상품 목록 컴포넌트
  */
-export function ProductList() {
+export const ProductList = memo(function ProductList() {
   const { products, loading, error, totalCount } = useProductStore();
   const hasMore = products.length < totalCount;
 
@@ -95,4 +96,4 @@ export function ProductList() {
       <div id="scroll-trigger" className="h-4"></div>
     </div>
   );
-}
+});

@@ -5,8 +5,9 @@ import type { Product } from "../types";
 import { PublicImage } from "../../../components";
 import RelatedProducts from "./RelatedProducts";
 import { addToCart } from "../../carts";
+import { memo } from "../../../../../lib/src/hocs/memo";
 
-export function ProductDetail(product: Readonly<Product>) {
+export const ProductDetail = memo(function ProductDetail(product: Readonly<Product>) {
   const { productId, title, image, lprice, brand, category1, category2 } = product;
   const [cartQuantity, setCartQuantity] = useState(1);
 
@@ -202,4 +203,4 @@ export function ProductDetail(product: Readonly<Product>) {
       <RelatedProducts />
     </div>
   );
-}
+});

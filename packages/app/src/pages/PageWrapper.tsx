@@ -1,12 +1,13 @@
 import type { PropsWithChildren, ReactNode } from "react";
 import { CartModal, openModal, Toast, useCartStoreSelector, useUIStore } from "../entities";
 import { Footer, PublicImage } from "../components";
+import { memo } from "../../../lib/src/hocs/memo";
 
 interface Props {
   headerLeft: ReactNode;
 }
 
-export const PageWrapper = ({ headerLeft, children }: PropsWithChildren<Props>) => {
+export const PageWrapper = memo(function PageWrapper({ headerLeft, children }: PropsWithChildren<Props>) {
   const { cartModal, toast } = useUIStore();
   const cartSize = useCartStoreSelector((cart) => cart.items.length);
 
@@ -46,4 +47,4 @@ export const PageWrapper = ({ headerLeft, children }: PropsWithChildren<Props>) 
       <Footer />
     </div>
   );
-};
+});

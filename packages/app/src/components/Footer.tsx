@@ -1,4 +1,6 @@
-export function Footer() {
+import { memo } from "../../../lib/src/hocs/memo";
+
+export const Footer = memo(function Footer() {
   return (
     <footer className="bg-white shadow-sm sticky top-0 z-40">
       <div className="max-w-md mx-auto py-8 text-center text-gray-500">
@@ -6,4 +8,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+});
